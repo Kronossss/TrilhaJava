@@ -1,0 +1,65 @@
+1 - O que é uma exceção em Java e qual é o propósito de usá-las em programas?
+Uma exceção em Java é um evento anormal durante a execução de um programa, indicando um erro ou condição excepcional.
+O propósito das exceções é lidar com erros de forma estruturada, separando o código que pode gerar erros do código de tratamento.
+Isso melhora a legibilidade, manutenção e robustez do programa, permitindo que desenvolvedores identifiquem, relatem e lidem com erros de maneira controlada.
+O uso de blocos try-catch-finally em Java ajuda a gerenciar exceções, permitindo tratamento adequado e execução de ações finais, mesmo em casos de erro.
+
+2 -Pesquise sobre a diferença entre exceções verificadas e não verificadas em Java. Dê exemplos de cada uma.
+
+Exceções Verificadas (Checked Exceptions):
+Definição: São exceções que o compilador obriga a tratar ou lançar. Isso significa que, se um método pode lançar uma exceção verificada,
+o código que chama esse método deve incluir uma cláusula throws no cabeçalho do método ou deve ser envolto em um bloco try-catch.
+
+Exemplo:
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ExcecaoVerificadaExemplo {
+    public static void main(String[] args) {
+        try {
+            FileReader file = new FileReader("arquivo.txt");
+            BufferedReader bufferedReader = new BufferedReader(file);
+            String linha = bufferedReader.readLine();
+            System.out.println(linha);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+Exceções Não Verificadas (Unchecked Exceptions):
+
+Definição: São exceções que o compilador não obriga a tratar ou lançar. Geralmente, são subclasses de RuntimeException.
+Essas exceções podem ocorrer durante a execução do programa e não precisam ser explicitamente tratadas.
+Exemplo:
+
+public class ExcecaoNaoVerificadaExemplo {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3};
+        System.out.println(array[4]); // Isso lançará ArrayIndexOutOfBoundsException
+    }
+}
+
+3 -  Como você pode lidar com exceções em Java? Quais são as palavras-chave e as práticas comuns para tratamento de exceções?
+
+try, catch, finally:
+try: Contém o bloco de código onde uma exceção pode ocorrer.
+catch: Captura e trata a exceção gerada no bloco try. Pode haver vários blocos catch para lidar com diferentes tipos de exceções.
+finally: Bloco opcional que sempre é executado, independentemente de ocorrer ou não uma exceção. Geralmente usado para liberar recursos.
+
+4 - O que é o bloco "try-catch" em Java? Como ele funciona e por que é importante usá-lo ao lidar com exceções?
+
+O bloco try-catch em Java é uma estrutura fundamental para o tratamento de exceções. Ele é usado para envolver um bloco de código onde podem ocorrer exceções,
+permitindo que o programador capture e trate essas exceções de maneira controlada.
+
+5 - Quando é apropriado criar suas próprias exceções personalizadas em Java e como você pode fazer isso? Dê um exemplo de quando e por que você criaria
+    uma exceção personalizada.
+
+Criar suas próprias exceções personalizadas em Java é apropriado quando você precisa representar condições específicas de erro ou situações excepcionais que não
+são adequadamente cobertas pelas exceções padrão fornecidas pela linguagem. Isso permite uma gestão mais precisa de erros em seu código, tornando-o mais legível.
+
+Facilitar o Entendimento: Para melhorar a legibilidade do código, especialmente em casos onde a natureza do erro é complexa e uma exceção padrão não transmite
+adequadamente a informação necessária.
+
