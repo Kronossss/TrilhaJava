@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         System.out.println(" Digite o nome do arquivo : ");
-        String nome = "C://Users//08419437530//IdeaProjects//aula09.01//src/" + sc.nextLine();
+        String nome = "C:\\Users\\igora\\Downloads\\TrilhaJava\\Exercicio09-01" + sc.nextLine();
         File arquivo = new File(nome);
         arquivo.createNewFile();
 
