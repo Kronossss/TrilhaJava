@@ -2,7 +2,7 @@ package com.redesocial.redesocial.controller.form;
 
 import com.redesocial.redesocial.modelo.Usuario;
 
-public class UsarioForm {
+public class UsuarioForm {
     String nome;
     String senha;
     String email;
@@ -35,6 +35,7 @@ public class UsarioForm {
     public Usuario criaUsuario(){
         return new Usuario(null, nome, senha, email);
     }
+
 }
 
 
