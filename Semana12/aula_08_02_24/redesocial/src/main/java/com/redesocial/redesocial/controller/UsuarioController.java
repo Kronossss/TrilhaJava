@@ -5,8 +5,13 @@ import com.redesocial.redesocial.controller.form.UsuarioForm;
 import com.redesocial.redesocial.modelo.Usuario;
 import com.redesocial.redesocial.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,10 +21,13 @@ public class UsuarioController {
     @Autowired
     private UsuarioRepository usuarioRepository;
     @PostMapping
-    public UsuarioDTO inserir(@RequestBody UsuarioForm UF){
+    public ResponseEntity<UsuarioDTO>  inserir(@RequestBody UsuarioForm UF, UriComponentsBuilder UB){
         Usuario usuario = UF.criaUsuario();
         usuarioRepository.save(usuario);
-        return new UsuarioDTO(usuario);
+        UsuarioDTO usuarioDTO = new UsuarioDTO(usuario);
+        UB.path("/usuarios/{id}");
+        URI uri = UB.buildAndExpand(usuario.getId()).toUri();
+        return ResponseEntity.created(uri).body(usuarioDTO);
 
     }
     @GetMapping
