@@ -1,4 +1,4 @@
-package com.cepedi.leilao;
+package com.leilao.leilao;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,7 +10,7 @@ class LeilaoApplicationTests {
 
 	@Test
 	void contextLoads() {
-		
+
 	}
 
 }
